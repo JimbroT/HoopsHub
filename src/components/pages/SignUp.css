@@ -1,0 +1,28 @@
+.sign-up-h1 {
+    font-size: 100px;
+    margin-top: -200px;
+    margin-right: -175px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+.sign-up-form {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 20px;
+    border-radius: 2px;
+    margin-right: 10px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    margin-bottom: 16px;
+    margin-left: -200px;
+}
+
+.input-areas {
+    display: flex;
+}
