@@ -6,7 +6,7 @@
 }
 
 .home,
-.services,
+.news,
 .products,
 .sign-up {
   display: flex;
@@ -16,7 +16,7 @@
   font-size: 3rem;
 }
 
-.services {
+.news {
   background-image: url('/public/images/img-2.jpg');
   background-position: center;
   background-size: cover;
