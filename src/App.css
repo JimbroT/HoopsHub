@@ -6,6 +6,10 @@
 }
 
 .home,
+<<<<<<< HEAD
+=======
+.news,
+>>>>>>> 9af568b49d07e2ecf844c62fbcce8f5f1f775b2f
 .products,
 .sign-up {
   display: flex;
@@ -15,6 +19,7 @@
   font-size: 3rem;
 }
 
+<<<<<<< HEAD
 .news-container {
   display: flex;
   flex-direction: column;
@@ -23,10 +28,15 @@
   height: 90vh;
   text-align: center;
   background-image: url('/public/images/img-fallback.jpeg');
+=======
+.news {
+  background-image: url('/public/images/img-2.jpg');
+>>>>>>> 9af568b49d07e2ecf844c62fbcce8f5f1f775b2f
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
+<<<<<<< HEAD
 }
 
 .news-title {
@@ -40,6 +50,9 @@
   font-family: fantasy;
   font-weight: bolder;
   text-shadow: 2px 2px black;
+=======
+  font-size: 100px;
+>>>>>>> 9af568b49d07e2ecf844c62fbcce8f5f1f775b2f
 }
 
 .products {
@@ -51,3 +64,14 @@
   font-size: 100px;
 }
 
+<<<<<<< HEAD
+=======
+.sign-up {
+  background-image: url('/public/images/sign-up-background.webp');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: 100px;
+}
+>>>>>>> 9af568b49d07e2ecf844c62fbcce8f5f1f775b2f
