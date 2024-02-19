@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/HoopsHub/static/css/main.6de16141.css",
+    "main.js": "/HoopsHub/static/js/main.3d7eb0f4.js",
+    "static/media/img-1.jpg": "/HoopsHub/static/media/img-1.53f4843759ebec256cb9.jpg",
+    "static/media/img-fallback.jpeg": "/HoopsHub/static/media/img-fallback.2182a1f45bfe48ececfc.jpeg",
+    "static/media/sign-up-background.webp": "/HoopsHub/static/media/sign-up-background.ee3f6d3e70ede2902879.webp",
+    "index.html": "/HoopsHub/index.html",
+    "main.6de16141.css.map": "/HoopsHub/static/css/main.6de16141.css.map",
+    "main.3d7eb0f4.js.map": "/HoopsHub/static/js/main.3d7eb0f4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6de16141.css",
+    "static/js/main.3d7eb0f4.js"
+  ]
+}
