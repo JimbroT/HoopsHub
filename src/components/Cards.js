@@ -18,7 +18,7 @@ function Cards() {
             return data.items[0].link; // Taking the first image result
           } catch (error) {
             console.error('Error fetching image:', error);
-            return 'images/img-fallback.jpeg'; // Fallback image in case of an error
+            return `${process.env.PUBLIC_URL}/images/img-fallback.jpeg`; // Fallback image in case of an error
           }
         };
 
@@ -45,7 +45,7 @@ function Cards() {
                     {articles.map((article, index) => (   
                     <CardItem
                     key={index}
-                    src={article.imageUrl || 'images/img-fallback.jpeg'} // Use fetched image or fallback
+                    src={article.imageUrl || `${process.env.PUBLIC_URL}/images/img-fallback.jpeg`} // Use fetched image or fallback
                     text={article.title}
                     label={article.source}
                     path={article.url}/>

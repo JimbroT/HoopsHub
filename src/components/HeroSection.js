@@ -6,7 +6,7 @@ import './HeroSection.css'
 function HeroSection() {
   return (
     <div className='hero-container'>
-        <video src="videos/nba.mp4" autoPlay loop muted/>
+        <video src={`${process.env.PUBLIC_URL}/videos/nba.mp4`} autoPlay loop muted />
         <h1>ALL YOUR BASKETBALL NEWS HERE</h1>
         <p>What are you waiting for?</p>
         <div className='hero-btns'>

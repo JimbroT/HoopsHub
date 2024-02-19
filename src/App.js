@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import { Routes, Route } from 'react-router-dom';
@@ -10,12 +10,12 @@ import News from './components/pages/News';
 function App() {
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <Routes>
-        <Route path='/' exact Component={Home}></Route>
-        <Route path='/news' Component={News}></Route>
-        <Route path='/products' Component={Products}></Route>
-        <Route path='/sign-up' Component={SignUp}></Route>
+        <Route path='/' element={<Home />} />
+        <Route path='/news' element={<News />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/sign-up' element={<SignUp />} />
       </Routes>
     </>
   );
