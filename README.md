@@ -1,4 +1,4 @@
-# React HoopsHub
+# React HoopsHub: https://jimbrot.github.io
 
 ## Introduction
 React HoopsHub is an interactive web application designed for basketball enthusiasts who want to stay up-to-date with the latest NBA news and stories. Utilizing the power of modern APIs, this app provides users with rich content including articles, up-to-minute news, and exclusive stories.
