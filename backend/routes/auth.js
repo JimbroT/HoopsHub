@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const authMiddleware = require('../authMiddleware'); // Ensure this is correctly imported
+const authMiddleware = require('../authMiddleware'); // Ensure this import is correct
 const router = express.Router();
 require('dotenv').config();
 
@@ -45,7 +45,7 @@ router.post('/login', async (req, res) => {
 
 // Get User Profile
 router.get('/profile', authMiddleware, async (req, res) => {
-  console.log('Profile endpoint hit');
+  console.log('Profile endpoint hit'); // Ensure this log is here
   const user = await User.findById(req.user.id);
   res.status(200).json(user);
 });
