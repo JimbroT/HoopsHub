@@ -1,4 +1,4 @@
-# React HoopsHub: https://jimbrot.github.io/HoopsHub 
+# [HoopsHub](https://jimbrot.github.io/HoopsHub)
 ***Notice: (images will not load upon multiple refreshes due to a max query limit on Google Image API)*** 
 
 ## Introduction
