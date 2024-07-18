@@ -43,20 +43,6 @@
   font-size: 50px;
 }
 
-.products {
-  background-image: url('/public/images/img-1.jpg');
-  background-position: center;
-  background-size: fill;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
 
-.sign-up {
-  background-image: url('/public/images/sign-up-background.webp');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
+
+

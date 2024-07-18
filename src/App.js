@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/pages/Home';
-import Products from './components/pages/Products';
-import SignUp from './components/pages/SignUp';
-import News from './components/pages/News';
+import Register from './components/pages/register';
+import Login from './components/pages/Login';
+import Profile from './components/pages/profile';
 
 function App() {
+
+  const [token, setToken] = useState('');
+
   return (
     <>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/news' element={<News />} />
-        <Route path='/products' element={<Products />} />
-        <Route path='/sign-up' element={<SignUp />} />
+        <Route path='/register' element={<Register/>} />
+        <Route path='/login' element={<Login setToken={setToken} />} />
+        <Route path='/profile' element={<Profile token={token} />} />
       </Routes>
     </>
   );

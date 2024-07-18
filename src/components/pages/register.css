@@ -1,0 +1,85 @@
+/* Register.css */
+
+body {
+  background: #FF4500;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.split-screen {
+  display: flex;
+  height: 100vh;
+}
+
+.left-side {
+  flex: 1;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-right-side {
+  flex: 1;
+  background: url('/public/images/lebronsmoke.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.form-container h2 {
+  color: #FF8C00;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container input {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #FF8C00;
+  border-radius: 5px;
+  background-color: #F9F9F9;
+  font-size: 16px;
+}
+
+.form-container input:focus {
+  border-color: #FFA500;
+}
+
+.form-container button {
+  padding: 15px;
+  background-color: #FF8C00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.form-container button:hover {
+  background-color: #FFA500;
+}
+
+.form-container p {
+  text-align: center;
+  color: red;
+}
+
+.icon {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 18px;
+  color: #FF8C00;
+}
