@@ -12,6 +12,8 @@ export const Button = ({
   onClick,
   buttonStyle,
   buttonSize,
+  external,
+  link
 }) => {
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
@@ -19,15 +21,30 @@ export const Button = ({
 
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
-  return (
-    <Link to="/register" className="btn-mobile">
-      <button
-        className={"btn ${checkButtonStyle} ${checkButtonSize}"}
+  if (external) {
+    return (
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`btn ${checkButtonStyle} ${checkButtonSize}`}
         onClick={onClick}
-        type={type}
+        style={{ color: 'inherit', textDecoration: 'none' }}
       >
         {children}
-      </button>
-    </Link>
-  );
+      </a>
+    );
+  } else {
+    return (
+      <Link to={link} className="btn-mobile">
+        <button
+          className={`btn ${checkButtonStyle} ${checkButtonSize}`}
+          onClick={onClick}
+          type={type}
+        >
+          {children}
+        </button>
+      </Link>
+    );
+  }
 };
