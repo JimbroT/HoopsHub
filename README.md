@@ -1,15 +1,17 @@
-# React HoopsHub: https://jimbrot.github.io/HoopsHub
+# React HoopsHub: https://jimbrot.github.io/HoopsHub (Images will not load upon multiple refreshes due to a max query limit on Google Image API) 
 
 ## Introduction
 React HoopsHub is an interactive web application designed for basketball enthusiasts who want to stay up-to-date with the latest NBA news and stories. Utilizing the power of modern APIs, this app provides users with rich content including articles, up-to-minute news, and exclusive stories.
 
 ## Features
 - Real-time NBA news and updates.
+- Personal Profiles 
 - Custom search functionality to explore a wide array of basketball topics.
 - Engaging user interface with a focus on readability and ease of navigation.
 
 ## Technologies Used
 - React.js for a dynamic and responsive client-side application.
+- MongoDB Atlas, Mongoose, and Node.js for backend and data storage. 
 - Google Custom Search API for providing a tailored search experience.
 - NBA News API for fetching the latest news and stories about the NBA.
 
