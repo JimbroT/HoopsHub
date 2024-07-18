@@ -55,14 +55,3 @@ Contributions are what make the open-source community such an amazing place to l
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-## License
-Distributed under the MIT License. See `LICENSE` for more information.
-
-## Contact
-Your Name - [@<your-twitter-handle>](https://twitter.com/<your-twitter-handle>)
-Project Link: https://github.com/<your-username>/<your-repo-name>
-
-## Acknowledgments
-- Google Developers for providing the Custom Search API that powers the search functionality in this app.
-- NBA Stories API for being the primary source of all NBA-related news and content.
