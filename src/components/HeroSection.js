@@ -10,7 +10,12 @@ function HeroSection() {
       <h1>ALL YOUR BASKETBALL NEWS HERE</h1>
       <p>What are you waiting for?</p>
       <div className='hero-btns'>
-        <Button className='btns' buttonStyle='btn--outline' buttonSize='btn--large' link='/register'>
+        <Button
+          className='btns'
+          buttonStyle='btn--outline'
+          buttonSize='btn--large'
+          link='/register'
+        >
           GET STARTED
         </Button>
         <Button
