@@ -1,0 +1,22 @@
+.card-actions {
+  display: flex;
+  justify-content: flex-end; /* Align the button to the right */
+  padding: 10px;
+  background-color: #fff; /* Add background color for visibility */
+  border-top: 1px solid #ddd; /* Add border for separation */
+}
+
+.toggle-comments {
+  background: none;
+  border: none;
+  color: #FF4500;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.toggle-comments:hover {
+  background: #FF4500;
+  color: #fff;
+}
