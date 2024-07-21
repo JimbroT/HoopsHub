@@ -30,4 +30,24 @@ router.post('/', verifyToken, async (req, res) => {
   }
 });
 
+// Get comments for an article
+router.get('/:articleUrl', async (req, res) => {
+  try {
+    const encodedUrl = req.params.articleUrl;
+    const decodedUrl = decodeURIComponent(encodedUrl); 
+    console.log('Encoded URL:', encodedUrl);
+    console.log('Decoded URL:', decodedUrl);
+
+    const query = { articleUrl: decodedUrl };
+    console.log('Query:', JSON.stringify(query, null, 2));
+
+    const comments = await Comment.find(query).exec();
+    console.log('Comments found:', JSON.stringify(comments, null, 2));
+    res.json(comments);
+  } catch (err) {
+    console.error('Error fetching comments:', err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
