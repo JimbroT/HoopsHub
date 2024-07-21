@@ -3,36 +3,34 @@ const mongoose = require('mongoose');
 // Define the Comment schema
 const CommentSchema = new mongoose.Schema({
   user: {
-    type: mongoose.Schema.Types.ObjectId,  // Reference to the User model
-    ref: 'User',  // Refers to the User model
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true,
   },
-  article: {
-    type: mongoose.Schema.Types.ObjectId,  // Reference to the Article model
-    ref: 'Article',  // Refers to the Article model
+  articleUrl: {
+    type: String,
     required: true,
   },
   content: {
     type: String,
-    required: true,  // The content of the comment
+    required: true,
   },
   likes: [
     {
-      type: mongoose.Schema.Types.ObjectId,  // References to users who liked the comment
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
     },
   ],
   replies: [
     {
-      type: mongoose.Schema.Types.ObjectId,  // References to replies (which are also comments)
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Comment',
     },
   ],
   createdAt: {
     type: Date,
-    default: Date.now,  // Timestamp for when the comment was created
+    default: Date.now,
   },
-});
+}); 
 
-// Export the Comment model based on the schema
 module.exports = mongoose.model('Comment', CommentSchema);

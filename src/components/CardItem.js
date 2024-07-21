@@ -12,7 +12,7 @@ function CardItem(props) {
     setShowComments(!showComments);
   };
 
-  console.log('Rendering CardItem:', props.id); // Log component render
+  console.log('Rendering CardItem:', props.url); // Log component render
 
   return (
     <>
@@ -26,13 +26,13 @@ function CardItem(props) {
             <h5 className='cards_item__text'>{props.text}</h5>
           </div>
         </Link>
-          <div className="card-actions">
+        <div className="card-actions">
           <button onClick={toggleComments} className="toggle-comments">
             {showComments ? 'Hide Comments' : 'Show Comments'}
           </button>
         </div>
-        {showComments && <CommentSection articleId={props.id} token={props.token} />}
         </div>
+        {showComments && <CommentSection articleUrl={props.url} token={props.token} />} {/* Pass articleUrl */}
       </li>
     </>
   );

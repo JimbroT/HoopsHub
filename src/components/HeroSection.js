@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../App.css';
 import { Button } from './Button';
 import './HeroSection.css';
 
 function HeroSection() {
+  useEffect(() => {
+    console.log('HeroSection rendered');
+    console.log('Video path:', `${process.env.PUBLIC_URL}/videos/nba.mp4`);
+  }, []);
+
   return (
     <div className='hero-container'>
       <video src={`${process.env.PUBLIC_URL}/videos/nba.mp4`} autoPlay loop muted />

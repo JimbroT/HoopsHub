@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const authRoutes = require('./routes/auth');
+const commentRoutes = require('./routes/comments'); // Ensure this path is correct
 
 const app = express();
 app.use(cors());
@@ -18,15 +19,16 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.log('MongoDB connection error:', err));
 
 app.use('/api/auth', authRoutes);
-console.log('Routes registered'); // Ensure this line is here
+app.use('/api/comments', commentRoutes); // Register the comments route
+console.log('Routes registered');
 
 const port = process.env.PORT || 5001;
 
 // Add this test route before the app.listen call
 app.get('/test', (req, res) => {
-    res.send('Test route working');
-  });
-  
+  res.send('Test route working');
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });

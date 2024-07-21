@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Article = require('../models/Article');
 const User = require('../models/User');
-const { verifyToken } = require('../middleware/auth');
+const { verifyToken } = require('../authMiddleware');
 
 // Like an article
 router.put('/like/:id', verifyToken, async (req, res) => {
