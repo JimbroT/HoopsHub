@@ -1,5 +1,3 @@
-//This handles the frontend form submission for comments.
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CommentSection.css';
@@ -21,7 +19,9 @@ const CommentSection = ({ articleUrl, token }) => {
         console.error('Error fetching comments:', err);
       }
     };
-    fetchComments();
+    if (articleUrl) {
+      fetchComments();
+    }
   }, [articleUrl]);
 
   const handleCommentChange = (e) => {
@@ -32,17 +32,18 @@ const CommentSection = ({ articleUrl, token }) => {
     e.preventDefault();
     console.log('Submitting comment:', newComment); // Log before submission
     console.log('Article URL:', articleUrl); // Log articleUrl
+    console.log('Token:', token); // Log token
     try {
       const res = await axios.post(
         `http://localhost:5001/api/comments`,
-        { articleUrl: articleUrl, content: newComment },
-        { headers: { Authorization: `Bearer ${token}` } }
+        { articleUrl, content: newComment }, // Ensure correct request body
+        { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } } // Ensure headers are set
       );
       console.log('Comment submitted:', res.data); // Log successful submission
       setComments([...comments, res.data]);
       setNewComment('');
     } catch (err) {
-      console.error('Error submitting comment:', err); // Log error
+      console.error('Error submitting comment:', err.response ? err.response.data : err.message); // Log error
     }
   };
 

@@ -13,6 +13,7 @@ function CardItem(props) {
   };
 
   console.log('Rendering CardItem:', props.url); // Log component render
+  console.log('Token in CardItem component:', props.token); // Log token
 
   return (
     <>
@@ -32,7 +33,7 @@ function CardItem(props) {
           </button>
         </div>
         </div>
-        {showComments && <CommentSection articleUrl={props.url} token={props.token} />} {/* Pass articleUrl */}
+        {showComments && <CommentSection articleUrl={props.path} token={props.token} />} {/* Pass articleUrl */}
       </li>
     </>
   );

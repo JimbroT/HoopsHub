@@ -8,15 +8,16 @@ import Login from './components/pages/Login';
 import Profile from './components/pages/profile';
 
 function App() {
-
   const [token, setToken] = useState('');
+
+  console.log('Token in App component:', token); // Log token
 
   return (
     <>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/register' element={<Register/>} />
+        <Route path='/' element={<Home token={token} />} /> {/* Pass token to Home */}
+        <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login setToken={setToken} />} />
         <Route path='/profile' element={<Profile token={token} />} />
       </Routes>

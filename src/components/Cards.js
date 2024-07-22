@@ -27,11 +27,14 @@ function Cards({ token }) {
       .then(async (data) => {
         const articleWithImages = await Promise.all(data.map(async (article) => {
           const imageUrl = await fetchImageForArticle(article.title);
+          console.log('Article URL:', article.url); // Log article.url to verify it
           return { ...article, imageUrl };
         }));
         setArticles(articleWithImages);
       });
   }, []);
+
+  console.log('Token in Cards component:', token); // Log token
 
   return (
     <div className='cards'>
@@ -46,7 +49,7 @@ function Cards({ token }) {
                 src={article.imageUrl || `${process.env.PUBLIC_URL}/images/img-fallback.jpeg`}
                 text={article.title}
                 label={article.source}
-                path={article.url}
+                path={article.url} // This is used as props.url in CardItem
                 token={token} // Pass the token for authentication
               />
             ))}
