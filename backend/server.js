@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const authRoutes = require('./routes/auth');
-const commentRoutes = require('./routes/comments'); // Ensure correct import
+const commentRoutes = require('./routes/comments');
+const articleRoutes = require('./routes/articles'); // Add this line
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,10 @@ app.use('/api/comments', (req, res, next) => {
   console.log('Request to /api/comments received');
   next();
 }, commentRoutes);
+app.use('/api/articles', (req, res, next) => {
+  console.log('Request to /api/articles received');
+  next();
+}, articleRoutes); // Add this line
 
 console.log('Routes registered'); // Ensure this line is here
 

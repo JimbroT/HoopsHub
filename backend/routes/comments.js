@@ -56,7 +56,7 @@ router.get('/:articleUrl', async (req, res) => {
     const query = { articleUrl: decodedUrl };
     console.log('Query:', JSON.stringify(query, null, 2));
 
-    const comments = await Comment.find(query).exec();
+    const comments = await Comment.find(query).populate('user', 'username').exec();
     console.log('Comments found:', JSON.stringify(comments, null, 2));
     res.json(comments);
   } catch (err) {

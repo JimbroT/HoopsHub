@@ -50,6 +50,7 @@ function Cards({ token }) {
                 text={article.title}
                 label={article.source}
                 path={article.url} // This is used as props.url in CardItem
+                articleUrl={article.url} // Pass the article URL
                 token={token} // Pass the token for authentication
               />
             ))}

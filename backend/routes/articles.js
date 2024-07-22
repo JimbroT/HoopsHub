@@ -2,55 +2,54 @@ const express = require('express');
 const router = express.Router();
 const Article = require('../models/Article');
 const User = require('../models/User');
-const { verifyToken } = require('../authMiddleware');
-
-// Like an article
-router.put('/like/:id', verifyToken, async (req, res) => {
-  try {
-    const userId = req.user.id;
-    const articleId = req.params.id;
-
-    const user = await User.findById(userId);
-    if (!user.likedArticles.includes(articleId)) {
-      await user.updateOne({ $push: { likedArticles: articleId } });
-      res.json('Article has been liked');
-    } else {
-      res.json('You already liked this article');
-    }
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+const verifyToken = require('../authMiddleware');
 
 // Bookmark an article
-router.put('/bookmark/:id', verifyToken, async (req, res) => {
+router.put('/bookmark/:url', verifyToken, async (req, res) => {
   try {
     const userId = req.user.id;
-    const articleId = req.params.id;
+    const articleUrl = decodeURIComponent(req.params.url);
+
+    let article = await Article.findOne({ url: articleUrl });
+
+    if (!article) {
+      article = new Article({
+        url: articleUrl,
+        title: req.body.title,
+        imageUrl: req.body.imageUrl,
+        source: req.body.source,
+        bookmarkedBy: [] // Initialize as an empty array
+      });
+      await article.save();
+      console.log('New article saved:', article);
+    } else {
+      console.log('Article already exists:', article);
+    }
 
     const user = await User.findById(userId);
-    if (!user.bookmarkedArticles.includes(articleId)) {
-      await user.updateOne({ $push: { bookmarkedArticles: articleId } });
-      res.json('Article has been bookmarked');
+
+    if (!user.bookmarkedArticles) {
+      user.bookmarkedArticles = [];
+    }
+
+    const isBookmarkedByUser = article.bookmarkedBy.includes(userId);
+
+    if (isBookmarkedByUser) {
+      await user.updateOne({ $pull: { bookmarkedArticles: article._id } });
+      await article.updateOne({ $pull: { bookmarkedBy: userId } });
+      res.json('Article has been unbookmarked');
     } else {
-      res.json('You already bookmarked this article');
+      await user.updateOne({ $push: { bookmarkedArticles: article._id } });
+      await article.updateOne({ $push: { bookmarkedBy: userId } });
+      res.json('Article has been bookmarked');
     }
   } catch (err) {
-    res.status(500).json(err);
+    console.error('Error processing bookmark:', err);
+    res.status(500).json({ message: 'Internal Server Error', error: err.message });
   }
 });
 
-// Get liked articles
-router.get('/liked', verifyToken, async (req, res) => {
-  try {
-    const user = await User.findById(req.user.id).populate('likedArticles');
-    res.json(user.likedArticles);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// Get bookmarked articles
+// Get bookmarked articles for a user
 router.get('/bookmarked', verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).populate('bookmarkedArticles');
