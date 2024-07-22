@@ -8,6 +8,21 @@ router.get('/test', (req, res) => {
   res.send('Comments route working');
 });
 
+// Like a comment
+router.put('/like/:id', verifyToken, async (req, res) => {
+  try {
+    const comment = await Comment.findById(req.params.id);
+    if (!comment) {
+      return res.status(404).json({ message: 'Comment not found' });
+    }
+    comment.likes.push(req.user.id);
+    await comment.save();
+    res.status(200).json(comment);
+  } catch (err) {
+    res.status(500).json({ message: 'Something went wrong' });
+  }
+});
+
 // Create a comment
 router.post('/', verifyToken, async (req, res) => {
   console.log('POST /api/comments hit');

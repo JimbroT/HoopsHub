@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CommentSection.css';
+import { FaHeart } from 'react-icons/fa';
 
 const CommentSection = ({ articleUrl, token }) => {
   const [comments, setComments] = useState([]);
@@ -49,16 +50,17 @@ const CommentSection = ({ articleUrl, token }) => {
 
   const likeComment = async (commentId) => {
     try {
-      await axios.put(
+      const res = await axios.put(
         `http://localhost:5001/api/comments/like/${commentId}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
+      console.log('Comment liked:', res.data); // Log successful like
       setComments(comments.map(comment =>
         comment._id === commentId ? { ...comment, likes: comment.likes + 1 } : comment
       ));
     } catch (err) {
-      console.error(err);
+      console.error('Error liking comment:', err.response ? err.response.data : err.message); // Log error
     }
   };
 
@@ -70,7 +72,9 @@ const CommentSection = ({ articleUrl, token }) => {
           <p className="comment-user">{comment.user.username}</p>
           <p>{comment.content}</p>
           <div className="comment-actions">
-            <button onClick={() => likeComment(comment._id)}>Like ({comment.likes})</button>
+            <button onClick={() => likeComment(comment._id)}>
+              <FaHeart /> {comment.likes.length}
+            </button>
           </div>
         </div>
       ))}
