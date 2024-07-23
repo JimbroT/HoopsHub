@@ -6,8 +6,8 @@ function Cards({ token }) {
   const [articles, setArticles] = useState([]);
 
   const fetchImageForArticle = async (title) => {
-    const apiKey = 'AIzaSyA74WhWf-LTi4YILRGa0J7LRTzl1Z7JoEY';
-    const searchEngineId = 'a0a587dc99fa840d5';
+    const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
+    const searchEngineId = process.env.REACT_APP_SEARCH_ENGINE_ID;
     const query = title;
     const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${searchEngineId}&searchType=image&q=${encodeURIComponent(query)}`;
 
