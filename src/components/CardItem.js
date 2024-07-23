@@ -10,7 +10,7 @@ function CardItem(props) {
 
   useEffect(() => {
     const checkIfBookmarked = async () => {
-      const url = `http://localhost:5001/api/articles/bookmarked`;
+      const url = `https://hoops-hub-backend.onrender.com/api/articles/bookmarked`;
       const token = props.token;
 
       try {
