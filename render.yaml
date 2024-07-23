@@ -2,18 +2,19 @@ services:
   - type: web
     name: hoops-hub-backend
     env: node
-    region: oregon
     plan: free
-    buildCommand: |
-      cd backend && npm install
-      cd .. && npm install && npm run build
-    startCommand: cd backend && node server.js
+    buildCommand: "cd backend && npm install && cd .. && npm install && npm run build"
+    startCommand: "cd backend && node server.js"
     envVars:
       - key: MONGO_URI
-        value: "your_mongo_uri"
+        value: your_mongo_uri
       - key: JWT_SECRET
-        value: "your_jwt_secret"
-      - key: API_KEY
-        value: "your_api_key"
-      - key: SEARCH_ENGINE_ID
-        value: "your_search_engine_id"
+        value: your_jwt_secret
+    region: oregon
+
+  - type: static_site
+    name: hoops-hub-frontend
+    env: static
+    buildCommand: "npm install && npm run build"
+    publishPath: "build"
+    plan: free
