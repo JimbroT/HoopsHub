@@ -34,7 +34,7 @@ console.log('Routes registered');
 const port = process.env.PORT || 5001;
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.get('/test', (req, res) => {
   res.send('Test route working');
@@ -42,7 +42,7 @@ app.get('/test', (req, res) => {
 
 // The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 app.listen(port, () => {
