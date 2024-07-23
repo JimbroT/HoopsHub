@@ -1,7 +1,8 @@
 # Visit [HoopsHub](https://hoops-hub-backend.onrender.com/HoopsHub)
 
-***Notice: (images will not load upon multiple refreshes due to a max query limit on Google Image API)*** 
-
+***Notice: -(images will not load upon multiple refreshes due to a max query limit on Google Image API)*** 
+           - (can be slightly delayed due to Render services.
+           
 ## Introduction
 React HoopsHub is an interactive web application designed for basketball enthusiasts who want to stay up-to-date with the latest NBA news and stories. Utilizing the power of modern APIs, this app provides users with rich content including articles, up-to-minute news, and exclusive stories.
 
@@ -18,6 +19,7 @@ React HoopsHub is an interactive web application designed for basketball enthusi
 - Bookmark Articles and save them for later (visit profile page to view at any time) 
 
 ## Technologies Used
+- Deployed through Render.
 - React.js for a dynamic and responsive client-side application.
 - MongoDB Atlas, Mongoose, Express.js, Node.js for backend and data storage. 
 - Google Custom Search API for providing a tailored search experience.
