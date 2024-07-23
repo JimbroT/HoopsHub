@@ -77,8 +77,8 @@ const Profile = ({ token }) => {
       <h2>Profile</h2>
       {user ? (
         <div>
-          <p>Username: {user.username}</p>
-          <p>Email: {user.email}</p>
+          <p className='profile-creds'>Username: {user.username}</p>
+          <p className='profile-creds'>Email: {user.email}</p>
           <button className="profile-btn" onClick={toggleShowLiked}>
             {showLiked ? 'Hide Liked Articles' : 'Show Liked Articles'}
           </button>

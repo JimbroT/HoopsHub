@@ -70,7 +70,7 @@ const CommentSection = ({ articleUrl, token }) => {
       {comments.map(comment => (
         <div key={comment._id} className="comment">
           <p className="comment-user">{comment.user.username}</p>
-          <p>{comment.content}</p>
+          <p className='comment-content'>{comment.content}</p>
           <div className="comment-actions">
             <button onClick={() => likeComment(comment._id)}>
               <FaHeart /> {comment.likes.length}
