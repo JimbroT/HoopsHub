@@ -40,7 +40,7 @@ function CardItem(props) {
 
   const handleBookmark = async (e) => {
     e.stopPropagation(); // Prevent the event from bubbling up to the Link
-    const url = `http://localhost:5001/api/articles/bookmark/${encodeURIComponent(props.path)}`;
+    const url = `https://hoops-hub-backend.onrender.com/api/articles/bookmark/${encodeURIComponent(props.path)}`;
     const token = props.token;
 
     try {

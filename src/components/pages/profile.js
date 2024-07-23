@@ -30,7 +30,7 @@ const Profile = ({ token }) => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('http://localhost:5001/api/auth/profile', {
+        const response = await axios.get('https://hoops-hub-backend.onrender.com/api/auth/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -49,7 +49,7 @@ const Profile = ({ token }) => {
   const fetchBookmarkedArticles = async () => {
     try {
       console.log('Fetching bookmarked articles...');
-      const res = await axios.get('http://localhost:5001/api/articles/bookmarked', {
+      const res = await axios.get('https://hoops-hub-backend.onrender.com/api/articles/bookmarked', {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log('Bookmarked articles fetched:', res.data);
@@ -62,7 +62,7 @@ const Profile = ({ token }) => {
   const fetchLikedArticles = async () => {
     try {
       console.log('Fetching liked articles...');
-      const res = await axios.get('http://localhost:5001/api/articles/liked', {
+      const res = await axios.get('https://hoops-hub-backend.onrender.com/api/articles/liked', {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log('Liked articles fetched:', res.data);

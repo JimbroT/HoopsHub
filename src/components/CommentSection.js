@@ -13,7 +13,7 @@ const CommentSection = ({ articleUrl, token }) => {
       try {
         const encodedUrl = encodeURIComponent(articleUrl);
         console.log('Encoded URL for fetching comments:', encodedUrl); // Log encoded URL
-        const res = await axios.get(`http://localhost:5001/api/comments/${encodedUrl}`);
+        const res = await axios.get(`https://hoops-hub-backend.onrender.com/api/comments/${encodedUrl}`);
         console.log('Fetched comments response:', res.data); // Log the response
         setComments(res.data);
       } catch (err) {
@@ -36,7 +36,7 @@ const CommentSection = ({ articleUrl, token }) => {
     console.log('Token:', token); // Log token
     try {
       const res = await axios.post(
-        `http://localhost:5001/api/comments`,
+        `https://hoops-hub-backend.onrender.com/api/comments`,
         { articleUrl, content: newComment }, // Ensure correct request body
         { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } } // Ensure headers are set
       );
@@ -51,7 +51,7 @@ const CommentSection = ({ articleUrl, token }) => {
   const likeComment = async (commentId) => {
     try {
       const res = await axios.put(
-        `http://localhost:5001/api/comments/like/${commentId}`,
+        `https://hoops-hub-backend.onrender.com/api/comments/like/${commentId}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
