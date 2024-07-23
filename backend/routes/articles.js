@@ -52,10 +52,12 @@ router.put('/bookmark/:url', verifyToken, async (req, res) => {
 // Get bookmarked articles for a user
 router.get('/bookmarked', verifyToken, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).populate('bookmarkedArticles');
-    res.json(user.bookmarkedArticles);
+    const userId = req.user.id;
+    const articles = await Article.find({ bookmarkedBy: userId });
+    res.json(articles || []); // ensure this is always an array
   } catch (err) {
-    res.status(500).json(err);
+    console.error('Error fetching bookmarked articles:', err);
+    res.status(500).json([]);
   }
 });
 

@@ -50,3 +50,21 @@ body {
 .profile-container ul li:hover {
   background-color: #f9f9f9;
 }
+
+.profile-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #FF8C00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.profile-btn:hover {
+  background-color: #FF4500;
+}

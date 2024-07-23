@@ -1,7 +1,8 @@
-//To display a comprehensive user profile, including personal details (username and email) and lists of liked and bookmarked articles.
+// To display a comprehensive user profile, including personal details (username and email) and lists of liked and bookmarked articles.
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import CardItem from '../CardItem'; // Ensure the correct path to CardItem
 import './profile.css';
 
 const Profile = ({ token }) => {
@@ -9,6 +10,22 @@ const Profile = ({ token }) => {
   const [message, setMessage] = useState('');
   const [likedArticles, setLikedArticles] = useState([]);
   const [bookmarkedArticles, setBookmarkedArticles] = useState([]);
+  const [showBookmarked, setShowBookmarked] = useState(false);
+  const [showLiked, setShowLiked] = useState(false);
+
+  const toggleShowBookmarked = async () => {
+    if (!showBookmarked) {
+      await fetchBookmarkedArticles();
+    }
+    setShowBookmarked(!showBookmarked);
+  };
+
+  const toggleShowLiked = async () => {
+    if (!showLiked) {
+      await fetchLikedArticles();
+    }
+    setShowLiked(!showLiked);
+  };
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -24,34 +41,36 @@ const Profile = ({ token }) => {
       }
     };
 
-    const fetchLikedArticles = async () => {
-      try {
-        const res = await axios.get('http://localhost:5001/api/articles/liked', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setLikedArticles(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    const fetchBookmarkedArticles = async () => {
-      try {
-        const res = await axios.get('http://localhost:5001/api/articles/bookmarked', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setBookmarkedArticles(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
     if (token) {
       fetchProfile();
-      fetchLikedArticles();
-      fetchBookmarkedArticles();
     }
   }, [token]);
+
+  const fetchBookmarkedArticles = async () => {
+    try {
+      console.log('Fetching bookmarked articles...');
+      const res = await axios.get('http://localhost:5001/api/articles/bookmarked', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log('Bookmarked articles fetched:', res.data);
+      setBookmarkedArticles(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const fetchLikedArticles = async () => {
+    try {
+      console.log('Fetching liked articles...');
+      const res = await axios.get('http://localhost:5001/api/articles/liked', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log('Liked articles fetched:', res.data);
+      setLikedArticles(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="profile-container">
@@ -60,18 +79,50 @@ const Profile = ({ token }) => {
         <div>
           <p>Username: {user.username}</p>
           <p>Email: {user.email}</p>
-          <h3>Liked Articles</h3>
-          <ul>
-            {likedArticles.map((article) => (
-              <li key={article._id}>{article.title}</li>
-            ))}
-          </ul>
-          <h3>Bookmarked Articles</h3>
-          <ul>
-            {bookmarkedArticles.map((article) => (
-              <li key={article._id}>{article.title}</li>
-            ))}
-          </ul>
+          <button className="profile-btn" onClick={toggleShowLiked}>
+            {showLiked ? 'Hide Liked Articles' : 'Show Liked Articles'}
+          </button>
+          <button className="profile-btn" onClick={toggleShowBookmarked}>
+            {showBookmarked ? 'Hide Bookmarked Articles' : 'Show Bookmarked Articles'}
+          </button>
+          {showLiked && (
+            <div>
+              <h3>Liked Articles</h3>
+              <ul className="cards__items">
+                {likedArticles.map((article) => (
+                  <CardItem
+                    key={article._id}
+                    id={article._id}
+                    src={article.imageUrl || `${process.env.PUBLIC_URL}/images/img-fallback.jpeg`}
+                    text={article.title}
+                    label={article.source}
+                    path={article.url}
+                    articleUrl={article.url}
+                    token={token}
+                  />
+                ))}
+              </ul>
+            </div>
+          )}
+          {showBookmarked && (
+            <div>
+              <h3>Bookmarked Articles</h3>
+              <ul className="cards__items">
+                {bookmarkedArticles.map((article) => (
+                  <CardItem
+                    key={article._id}
+                    id={article._id}
+                    src={article.imageUrl || `${process.env.PUBLIC_URL}/images/img-fallback.jpeg`}
+                    text={article.title}
+                    label={article.source}
+                    path={article.url}
+                    articleUrl={article.url}
+                    token={token}
+                  />
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       ) : (
         <p>{message}</p>
